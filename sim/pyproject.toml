@@ -1,0 +1,9 @@
+[tool.hatch.build.targets.wheel]
+packages = ["hugsim-env"]
+
+[project]
+name = "hugsim-env"
+version = "0.0.1"
+dependencies = [
+  "gymnasium",
+]

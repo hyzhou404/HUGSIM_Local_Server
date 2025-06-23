@@ -1,0 +1,12 @@
+[workspace]
+authors = ["hyzhou"]
+channels = ["conda-forge"]
+name = "HUGSIM"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "==3.11.10"
+setuptools = "==78.1.0"

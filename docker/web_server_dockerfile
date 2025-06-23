@@ -1,0 +1,75 @@
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=UTC \
+    HF_HUB_ENABLE_HF_TRANSFER=1
+
+ENV PATH="${HOME}/miniconda3/bin:${PATH}"
+ARG PATH="${HOME}/miniconda3/bin:${PATH}"
+
+RUN apt-get update &&  \
+    apt-get upgrade -y &&  \
+    apt-get install -y \
+    build-essential \
+    cmake \
+    curl \
+    ca-certificates \
+    gcc \
+    git \
+    locales \
+    net-tools \
+    wget \
+    libpq-dev \
+    libsndfile1-dev \
+    git \
+    git-lfs \
+    libgl1 \
+    unzip \
+    openjdk-11-jre-headless \
+    libseccomp-dev \
+    && rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    git lfs install
+
+WORKDIR /app
+
+RUN mkdir -p /app/.cache
+ENV HF_HOME="/app/.cache"
+RUN chown -R 1000:1000 /app
+USER 1000
+ENV HOME=/app
+
+ENV PYTHONPATH=$HOME/app \
+    PYTHONUNBUFFERED=1 \
+    SYSTEM=spaces
+
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && sh Miniconda3-latest-Linux-x86_64.sh -b -p /app/miniconda \
+    && rm -f Miniconda3-latest-Linux-x86_64.sh
+ENV PATH /app/miniconda/bin:$PATH
+
+RUN conda create -p /app/env -y python=3.11
+
+SHELL ["conda", "run","--no-capture-output", "-p","/app/env", "/bin/bash", "-c"]
+
+COPY --chown=1000:1000 . /app/
+
+ENV TCNN_CUDA_ARCHITECTURES 75
+
+ENV TORCH_CUDA_ARCH_LIST "7.5"
+
+RUN curl -fsSL https://pixi.sh/install.sh | sh
+
+ENV PATH="/app/.pixi/bin:$PATH"
+
+RUN cp ./docker/pixi_conda.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi1.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi2.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi3.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi_source.toml ./pixi.toml && pixi install -v
+
+RUN ./.pixi/envs/default/bin/python /app/download_pre_datas.py
+
+CMD ["./.pixi/envs/default/bin/python", "web_server.py"]

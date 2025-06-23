@@ -1,0 +1,31 @@
+mode: medium_00
+plan_list:
+- - 2.0
+  - 30.0
+  - -0.3
+  - 0
+  - 0
+  - '2024_07_07_05_43_00'
+  - ConstantPlanner
+  - {}
+iteration: 30000
+sh_degree: 3
+load_HD_map: false
+white_background: false
+data_device: cpu
+data_type: nuscenes
+start_euler:
+- 0.0
+- 0.0
+- 0.0
+start_ab:
+- 0.0
+- 0.0
+start_velo: 1
+start_steer: 0
+target: 60
+scene_name: scene-0383
+affine: false
+quiet: false
+ignore_dynamic: false
+unicycle: false

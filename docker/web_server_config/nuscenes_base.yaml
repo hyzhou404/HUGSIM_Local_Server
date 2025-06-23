@@ -1,0 +1,6 @@
+realcar_path: /app/app_datas/PAMI2024/release/3DRealCar
+model_base: /app/app_datas/PAMI2024/release/ss/scenes/nuscenes
+output_dir: /app/app_datas/PAMI2024/release/outputs/benchmark/out/nusc_
+HD_map:
+  path: /app/app_datas/datasets/nuScenes/raw/Trainval
+  version: nusc_trainval

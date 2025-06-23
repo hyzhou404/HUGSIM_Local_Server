@@ -1,0 +1,5 @@
+[pypi-config]
+# These are sections specifically related to the PyPI configuration.
+index-url = "https://mirrors.zju.edu.cn/pypi/web/simple"
+extra-index-urls = ["https://pypi.org/simple"]
+keyring-provider = "disabled"
