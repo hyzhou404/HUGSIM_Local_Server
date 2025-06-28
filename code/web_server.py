@@ -76,8 +76,7 @@ def _get_scene_list(base_output: str) -> List[SceneConfig]:
     """
     
     scene_list = []
-    # for data_type in ['kitti360', 'waymo', 'nuscenes', 'pandaset']:
-    for data_type in ['kitti360', "nuscenes"]:
+    for data_type in ['kitti360', 'waymo', 'nuscenes', 'pandaset']:
         base_path = os.path.join(os.path.dirname(__file__), "web_server_config", f'{data_type}_base.yaml')
         camera_path = os.path.join(os.path.dirname(__file__), "web_server_config", f'{data_type}_camera.yaml')
         kinematic_path = os.path.join(os.path.dirname(__file__), "web_server_config", 'kinematic.yaml')
@@ -89,16 +88,10 @@ def _get_scene_list(base_output: str) -> List[SceneConfig]:
         scenarios_list = glob(f"/app/app_datas/ss/scenarios/{data_type}/*.yaml")
         # if data_type == 'waymo':
         #     scenarios_list = [
-        #         # f"/app/app_datas/ss/scenarios/{data_type}/scene-113792265837-extreme-01.yaml",
+        #         f"/app/app_datas/ss/scenarios/{data_type}/scene-113792265837-extreme-01.yaml",
         #         f"/app/app_datas/ss/scenarios/{data_type}/scene-322492347634-extreme-01.yaml",
         #         f"/app/app_datas/ss/scenarios/{data_type}/scene-131421903137-easy-00.yaml",
-        #         # f"/app/app_datas/ss/scenarios/{data_type}/scene-131421903137-medium-02.yaml",
-        #     ]
-        # if data_type == 'pandaset':
-        #     scenarios_list = [
-        #         f"/app/app_datas/ss/scenarios/{data_type}/scene-034-easy-00.yaml",
-        #         # f"/app/app_datas/ss/scenarios/{data_type}/scene-131421903137-medium-02.yaml",
-        #         # f"/app/app_datas/ss/scenarios/{data_type}/scene-322492347634-extreme-01.yaml"
+        #         f"/app/app_datas/ss/scenarios/{data_type}/scene-131421903137-medium-02.yaml",
         #     ]
 
         for scenario_path in scenarios_list:
