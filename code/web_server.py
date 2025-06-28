@@ -366,4 +366,4 @@ async def main_page_endpoint():
     return HTMLResponse(content=html_content)
 
 
-uvicorn.run(app, host="0.0.0.0", port=7860, workers=1)
+uvicorn.run(app, host="0.0.0.0", port=8065, workers=1)
