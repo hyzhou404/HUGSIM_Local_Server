@@ -61,8 +61,8 @@ hf_transfer = "==0.1.9"
 moviepy = ">=2.2.1, <3"
 
 # install from source code
-hugsim-env = { path = "./sim", editable = true }
-simple-knn = { path = "./submodules/simple-knn", editable = false }
+hugsim-env = { path = "/app/code/sim", editable = true }
+simple-knn = { path = "/app/code/submodules/simple-knn", editable = false }
 gsplat = { git = "https://github.com/hyzhou404/HUGSIM_splat.git", rev = "main" }
 flow-vis-torch = { git = "https://github.com/ChristophReich1996/Optical-Flow-Visualization-PyTorch", rev = "main" }
 unidepth = { git = "https://github.com/hyzhou404/UniDepth.git", rev = "main" }

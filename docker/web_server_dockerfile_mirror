@@ -57,7 +57,6 @@ SHELL ["conda", "run","--no-capture-output", "-p","/app/env", "/bin/bash", "-c"]
 COPY --chown=1000:1000 . /app/
 
 ENV TCNN_CUDA_ARCHITECTURES 89
-
 ENV TORCH_CUDA_ARCH_LIST "8.9"
 
 ENV http_proxy "http://127.0.0.1:7890"
@@ -71,14 +70,11 @@ ENV PATH="/app/.pixi/bin:$PATH"
 
 RUN mkdir -p /app/.config/pixi && cp ./docker/pixi_config.toml /app/.config/pixi/config.toml
 
-
 RUN cp ./docker/pixi.lock ./pixi.lock
-# RUN cp ./docker/pixi_conda.toml ./pixi.toml && pixi install -v
-# RUN cp ./docker/pixi1.toml ./pixi.toml && pixi install -v
-# RUN cp ./docker/pixi2.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi_conda.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi1.toml ./pixi.toml && pixi install -v
+RUN cp ./docker/pixi2.toml ./pixi.toml && pixi install -v
 RUN cp ./docker/pixi3.toml ./pixi.toml && pixi install -v
 RUN cp ./docker/pixi_source.toml ./pixi.toml && pixi install -v
 
-# RUN ./.pixi/envs/default/bin/python /app/download_pre_datas.py
-
-CMD ["./.pixi/envs/default/bin/python", "web_server.py"]
+# CMD ["./.pixi/envs/default/bin/python", "web_server.py"]

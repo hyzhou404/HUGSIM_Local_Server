@@ -1,0 +1,6 @@
+realcar_path: /app/app_datas/3DRealCar
+model_base: /app/app_datas/ss/scenes/nuscenes
+output_dir: /app/app_datas/outputs/benchmark/out/nusc_
+HD_map:
+  path: /app/app_datas/datasets/nuScenes/raw/Trainval
+  version: nusc_trainval

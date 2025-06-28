@@ -1,0 +1,3 @@
+realcar_path: /app/app_datas/3DRealCar
+model_base: /app/app_datas/ss/scenes/pandaset
+output_dir: /app/app_datas/outputs/benchmark/out/pandaset_

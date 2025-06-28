@@ -70,6 +70,4 @@ RUN cp ./docker/pixi2.toml ./pixi.toml && pixi install -v
 RUN cp ./docker/pixi3.toml ./pixi.toml && pixi install -v
 RUN cp ./docker/pixi_source.toml ./pixi.toml && pixi install -v
 
-RUN ./.pixi/envs/default/bin/python /app/download_pre_datas.py
-
-CMD ["./.pixi/envs/default/bin/python", "web_server.py"]
+# CMD ["./.pixi/envs/default/bin/python", "web_server.py"]
